@@ -91,6 +91,7 @@ def create_app(config_name=None):
     from .routes.vulnerability_history import history_bp
     from .routes.database_manager import database_bp
     from .routes.evaluations import evaluations_bp
+    from .routes.admin import admin_bp
     
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
@@ -102,6 +103,7 @@ def create_app(config_name=None):
     app.register_blueprint(history_bp, url_prefix='/api/history')
     app.register_blueprint(database_bp, url_prefix='/api/database')
     app.register_blueprint(evaluations_bp, url_prefix='/api/evaluations')
+    app.register_blueprint(admin_bp, url_prefix='/api/admin')
     
     # Import models to ensure they are registered with SQLAlchemy
     from .models.user import User
