@@ -130,3 +130,174 @@
   }
 }
 
+/* Responsive utilities */
+.responsive-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.responsive-grid {
+  @apply grid gap-4 sm:gap-6 lg:gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.responsive-card {
+  @apply p-4 sm:p-6 lg:p-8;
+}
+
+/* Mobile-first responsive text */
+.responsive-text {
+  @apply text-sm sm:text-base lg:text-lg;
+}
+
+.responsive-heading {
+  @apply text-xl sm:text-2xl lg:text-3xl xl:text-4xl;
+}
+
+/* Responsive spacing */
+.responsive-section {
+  @apply py-8 sm:py-12 lg:py-16;
+}
+
+.responsive-margin {
+  @apply my-4 sm:my-6 lg:my-8;
+}
+
+/* Responsive navigation */
+.responsive-nav {
+  @apply flex flex-col sm:flex-row items-center gap-4 sm:gap-6;
+}
+
+/* Responsive tables */
+.responsive-table {
+  @apply w-full overflow-x-auto;
+}
+
+.responsive-table table {
+  @apply min-w-full text-sm;
+}
+
+/* Responsive forms */
+.responsive-form {
+  @apply space-y-4 sm:space-y-6;
+}
+
+.responsive-input {
+  @apply w-full sm:w-auto;
+}
+
+/* Responsive buttons */
+.responsive-button {
+  @apply w-full sm:w-auto px-4 py-2 sm:px-6 sm:py-3;
+}
+
+/* Responsive sidebar */
+.responsive-sidebar {
+  @apply fixed inset-y-0 left-0 z-50 w-64 bg-background border-r transform transition-transform duration-300 ease-in-out;
+}
+
+.responsive-sidebar.closed {
+  @apply -translate-x-full;
+}
+
+@media (min-width: 768px) {
+  .responsive-sidebar {
+    @apply relative translate-x-0;
+  }
+}
+
+/* Responsive modal */
+.responsive-modal {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+}
+
+.responsive-modal-content {
+  @apply w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl;
+}
+
+/* Responsive charts */
+.responsive-chart {
+  @apply w-full h-64 sm:h-80 lg:h-96;
+}
+
+/* Responsive dashboard */
+.responsive-dashboard {
+  @apply grid gap-4 sm:gap-6 lg:gap-8;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .responsive-dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-dashboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .responsive-dashboard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Responsive data tables */
+.responsive-data-table {
+  @apply overflow-x-auto;
+}
+
+.responsive-data-table table {
+  @apply min-w-full divide-y divide-border;
+}
+
+.responsive-data-table th,
+.responsive-data-table td {
+  @apply px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm;
+}
+
+/* Responsive filters */
+.responsive-filters {
+  @apply flex flex-col sm:flex-row gap-4 sm:gap-6;
+}
+
+.responsive-filter-group {
+  @apply flex flex-col sm:flex-row gap-2 sm:gap-4;
+}
+
+/* Responsive search */
+.responsive-search {
+  @apply w-full sm:w-64 lg:w-96;
+}
+
+/* Responsive pagination */
+.responsive-pagination {
+  @apply flex flex-col sm:flex-row items-center justify-between gap-4;
+}
+
+/* Responsive alerts */
+.responsive-alert {
+  @apply p-3 sm:p-4 lg:p-6;
+}
+
+/* Responsive tooltips */
+.responsive-tooltip {
+  @apply hidden sm:block;
+}
+
+/* Responsive loading states */
+.responsive-loading {
+  @apply flex items-center justify-center p-8 sm:p-12 lg:p-16;
+}
+
+/* Responsive empty states */
+.responsive-empty {
+  @apply text-center py-8 sm:py-12 lg:py-16;
+}
+
+/* Responsive error states */
+.responsive-error {
+  @apply text-center py-8 sm:py-12 lg:p-16;
+}
+
