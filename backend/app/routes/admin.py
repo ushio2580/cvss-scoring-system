@@ -4,6 +4,7 @@ from app.models.user import User, UserRole
 from app.models.vulnerability import Vulnerability, Severity, Status, Source
 from app.models.audit_log import AuditLog
 from app.utils.data_persistence import DataPersistence
+from sqlalchemy import text
 import json
 import os
 
@@ -115,7 +116,7 @@ def health_check():
     """Health check endpoint"""
     try:
         # Test database connection
-        db.session.execute('SELECT 1')
+        db.session.execute(text('SELECT 1'))
         
         # Count users
         user_count = User.query.count()
