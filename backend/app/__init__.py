@@ -116,6 +116,53 @@ def create_app(config_name=None):
     # Create database tables
     with app.app_context():
         db.create_all()
+        
+        # Initialize test users if they don't exist
+        try:
+            from .models.user import User, UserRole
+            
+            # Check if admin user exists
+            admin_user = User.query.filter_by(email='admin@cvss.com').first()
+            if not admin_user:
+                admin_user = User(
+                    name='Admin User',
+                    email='admin@cvss.com',
+                    password='admin123',
+                    role=UserRole.ADMIN
+                )
+                db.session.add(admin_user)
+                print("✅ Admin user created")
+            
+            # Check if analyst user exists
+            analyst_user = User.query.filter_by(email='analyst@cvss.com').first()
+            if not analyst_user:
+                analyst_user = User(
+                    name='Analyst User',
+                    email='analyst@cvss.com',
+                    password='analyst123',
+                    role=UserRole.ANALYST
+                )
+                db.session.add(analyst_user)
+                print("✅ Analyst user created")
+            
+            # Check if viewer user exists
+            viewer_user = User.query.filter_by(email='viewer@cvss.com').first()
+            if not viewer_user:
+                viewer_user = User(
+                    name='Viewer User',
+                    email='viewer@cvss.com',
+                    password='viewer123',
+                    role=UserRole.VIEWER
+                )
+                db.session.add(viewer_user)
+                print("✅ Viewer user created")
+            
+            db.session.commit()
+            print("✅ Database initialized with test users")
+            
+        except Exception as e:
+            print(f"⚠️  Warning: Could not initialize test users: {e}")
+            db.session.rollback()
     
     return app
 
