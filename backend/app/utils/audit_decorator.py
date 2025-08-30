@@ -3,6 +3,7 @@ from flask import request, g
 from flask_jwt_extended import get_jwt_identity
 from app.models.audit_log import AuditLog
 from app.models.user import User
+from app.utils.ip_utils import get_client_ip, get_client_info
 import json
 
 def audit_log(action, target_type=None, get_target_id=None, get_target_name=None, get_details=None, require_auth=True):
@@ -35,7 +36,7 @@ def audit_log(action, target_type=None, get_target_id=None, get_target_name=None
                     username = 'Unauthenticated'
             
             # Get request info
-            ip_address = request.remote_addr
+            ip_address = get_client_ip()
             user_agent = request.headers.get('User-Agent', '')
             
             # Initialize variables

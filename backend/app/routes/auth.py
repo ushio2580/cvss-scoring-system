@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, session
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_login import login_user, logout_user, login_required, current_user
+from app.utils.ip_utils import get_client_ip
 from app import db
 from app.models.user import User, UserRole
 from app.models.audit_log import AuditLog
@@ -116,7 +117,7 @@ def login():
         target_id=user.id,
         target_name=user.email,
         details=json.dumps({'email': user.email}),
-        ip_address=request.remote_addr,
+        ip_address=get_client_ip(),
         user_agent=request.headers.get('User-Agent', '')
     )
     db.session.add(audit_log)
@@ -167,7 +168,7 @@ def logout():
         target_type='user',
         target_id=current_user_id,
         target_name=user.email if user else 'Unknown',
-        ip_address=request.remote_addr,
+        ip_address=get_client_ip(),
         user_agent=request.headers.get('User-Agent', '')
     )
     db.session.add(audit_log)
