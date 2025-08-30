@@ -1,0 +1,137 @@
+[
+  {
+    "title": "Command Injection in API Endpoint",
+    "cve_id": "CVE-2024-5158",
+    "description": "Remote code execution vulnerability in API Endpoint allowing arbitrary code execution",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+    "severity": "High",
+    "status": "Fixed",
+    "source": "external"
+  },
+  {
+    "title": "Session Fixation in Password Reset",
+    "cve_id": "CVE-2024-9952",
+    "description": "Weak password requirements in Password Reset making accounts vulnerable",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+    "severity": "Medium",
+    "status": "Open",
+    "source": "internal"
+  },
+  {
+    "title": "Directory Listing in Payment Gateway",
+    "cve_id": "CVE-2023-5418",
+    "description": "Sensitive data exposure in Payment Gateway through improper handling",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+    "severity": "Low",
+    "status": "Fixed",
+    "source": "internal"
+  },
+  {
+    "title": "Cross-Site Scripting (XSS) in File Upload",
+    "cve_id": "CVE-2021-6488",
+    "description": "Reflected XSS in File Upload that can be exploited via user input",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+    "severity": "High",
+    "status": "Mitigating",
+    "source": "external"
+  },
+  {
+    "title": "Stored XSS in Payment Gateway",
+    "cve_id": "CVE-2020-8457",
+    "description": "Cross-site scripting vulnerability in Payment Gateway allowing script injection",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+    "severity": "High",
+    "status": "Fixed",
+    "source": "nvd"
+  },
+  {
+    "title": "Code Injection in Report Generation",
+    "cve_id": "CVE-2020-6415",
+    "description": "OS command injection in Report Generation that can be exploited for system access",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+    "severity": "High",
+    "status": "Open",
+    "source": "nvd"
+  },
+  {
+    "title": "Sensitive Data Exposure in User Registration",
+    "cve_id": "CVE-2022-1575",
+    "description": "Error information disclosure in User Registration revealing system details",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+    "severity": "Low",
+    "status": "Mitigating",
+    "source": "nvd"
+  },
+  {
+    "title": "Directory Listing in User Registration",
+    "cve_id": "CVE-2023-8361",
+    "description": "Sensitive data exposure in User Registration through improper handling",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+    "severity": "Low",
+    "status": "Open",
+    "source": "internal"
+  },
+  {
+    "title": "SQL Injection in User Registration",
+    "cve_id": "CVE-2021-8755",
+    "description": "Blind SQL injection in User Registration that can be exploited to extract sensitive data",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+    "severity": "Critical",
+    "status": "Open",
+    "source": "nvd"
+  },
+  {
+    "title": "Information Disclosure in Configuration Panel",
+    "cve_id": "CVE-2022-7273",
+    "description": "Directory listing vulnerability in Configuration Panel exposing file structure",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+    "severity": "Low",
+    "status": "Open",
+    "source": "nvd"
+  },
+  {
+    "title": "Authentication Bypass in Search Function",
+    "cve_id": "CVE-2020-2942",
+    "description": "Weak password requirements in Search Function making accounts vulnerable",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+    "severity": "Medium",
+    "status": "Fixed",
+    "source": "external"
+  },
+  {
+    "title": "Directory Listing in User Profile",
+    "cve_id": "CVE-2020-2124",
+    "description": "Sensitive data exposure in User Profile through improper handling",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+    "severity": "Low",
+    "status": "Accepted",
+    "source": "internal"
+  },
+  {
+    "title": "Weak Password Policy in Configuration Panel",
+    "cve_id": "CVE-2022-7050",
+    "description": "Brute force vulnerability in Configuration Panel allowing account enumeration",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+    "severity": "High",
+    "status": "Mitigating",
+    "source": "internal"
+  },
+  {
+    "title": "DOM-based XSS in User Registration",
+    "cve_id": "CVE-2023-8489",
+    "description": "DOM-based XSS in User Registration affecting client-side code",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+    "severity": "Medium",
+    "status": "Open",
+    "source": "nvd"
+  },
+  {
+    "title": "DOM-based XSS in File Upload",
+    "cve_id": "CVE-2024-9574",
+    "description": "Reflected XSS in File Upload that can be exploited via user input",
+    "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+    "severity": "Medium",
+    "status": "Open",
+    "source": "internal"
+  }
+]

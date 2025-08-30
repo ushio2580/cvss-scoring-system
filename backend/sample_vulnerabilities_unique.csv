@@ -1,0 +1,11 @@
+title,cve_id,description,vector,severity,status,source
+"SQL Injection in Login Form","CVE-2024-1001","Critical SQL injection vulnerability in login form","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Critical","Open","internal"
+"Cross-Site Scripting (XSS)","CVE-2024-1002","XSS vulnerability in search functionality","CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N","High","Open","nvd"
+"Weak Password Policy","CVE-2024-1003","Weak password requirements","CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L","Medium","Open","internal"
+"Information Disclosure","CVE-2024-1004","Sensitive information exposed in error messages","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N","Medium","Open","external"
+"Remote Code Execution","CVE-2024-1005","Critical RCE vulnerability in file upload","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Critical","Open","internal"
+"Buffer Overflow","CVE-2024-1006","Buffer overflow in network service","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Critical","Open","internal"
+"Directory Traversal","CVE-2024-1007","Path traversal vulnerability","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N","High","Open","external"
+"Command Injection","CVE-2024-1008","OS command injection vulnerability","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Critical","Open","internal"
+"Authentication Bypass","CVE-2024-1009","Authentication bypass vulnerability","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H","High","Open","internal"
+"Session Fixation","CVE-2024-1010","Session fixation vulnerability","CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N","Medium","Open","external"

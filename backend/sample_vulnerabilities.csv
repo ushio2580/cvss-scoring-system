@@ -1,0 +1,6 @@
+title,cve_id,description,vector,severity,status,source
+"SQL Injection in Login Form","CVE-2024-0001","Critical SQL injection vulnerability in login form","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Critical","Open","internal"
+"Cross-Site Scripting (XSS)","CVE-2024-0002","XSS vulnerability in search functionality","CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N","High","Open","nvd"
+"Weak Password Policy","CVE-2024-0003","Weak password requirements","CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L","Medium","Open","internal"
+"Information Disclosure","CVE-2024-0004","Sensitive information exposed in error messages","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N","Medium","Open","external"
+"Remote Code Execution","CVE-2024-0005","Critical RCE vulnerability in file upload","CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Critical","Open","internal"

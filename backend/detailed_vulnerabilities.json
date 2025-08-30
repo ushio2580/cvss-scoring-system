@@ -1,0 +1,99 @@
+{
+  "metadata": {
+    "generated_at": "2025-08-30T00:00:57.247185",
+    "total_vulnerabilities": 10,
+    "description": "Random vulnerabilities generated for testing bulk upload"
+  },
+  "vulnerabilities": [
+    {
+      "title": "Union-based SQL Injection in Web Service",
+      "cve_id": "CVE-2023-8130",
+      "description": "Union-based SQL injection in Web Service allowing data retrieval",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "Critical",
+      "status": "Mitigating",
+      "source": "nvd"
+    },
+    {
+      "title": "SQL Injection in Session Management",
+      "cve_id": "CVE-2020-3217",
+      "description": "Blind SQL injection in Session Management that can be exploited to extract sensitive data",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "Critical",
+      "status": "Mitigating",
+      "source": "internal"
+    },
+    {
+      "title": "Code Injection in File Management",
+      "cve_id": "CVE-2020-6175",
+      "description": "Code injection vulnerability in File Management affecting application logic",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "High",
+      "status": "Mitigating",
+      "source": "external"
+    },
+    {
+      "title": "Information Disclosure in User Profile",
+      "cve_id": "CVE-2024-3561",
+      "description": "Directory listing vulnerability in User Profile exposing file structure",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "Medium",
+      "status": "Mitigating",
+      "source": "nvd"
+    },
+    {
+      "title": "Session Fixation in Password Reset",
+      "cve_id": "CVE-2024-4275",
+      "description": "Authentication bypass vulnerability in Password Reset allowing unauthorized access",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+      "severity": "Medium",
+      "status": "Fixed",
+      "source": "internal"
+    },
+    {
+      "title": "Union-based SQL Injection in Authentication System",
+      "cve_id": "CVE-2023-6523",
+      "description": "SQL injection vulnerability in Authentication System allowing unauthorized database access",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "Critical",
+      "status": "Accepted",
+      "source": "external"
+    },
+    {
+      "title": "Command Injection in Admin Panel",
+      "cve_id": "CVE-2020-4198",
+      "description": "Code injection vulnerability in Admin Panel affecting application logic",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "High",
+      "status": "Fixed",
+      "source": "internal"
+    },
+    {
+      "title": "Stored XSS in Search Function",
+      "cve_id": "CVE-2020-1576",
+      "description": "DOM-based XSS in Search Function affecting client-side code",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+      "severity": "High",
+      "status": "Mitigating",
+      "source": "external"
+    },
+    {
+      "title": "Sensitive Data Exposure in API Endpoint",
+      "cve_id": "CVE-2022-4732",
+      "description": "Information disclosure vulnerability in API Endpoint exposing sensitive data",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "Low",
+      "status": "Mitigating",
+      "source": "internal"
+    },
+    {
+      "title": "DOM-based XSS in Admin Panel",
+      "cve_id": "CVE-2020-2406",
+      "description": "Cross-site scripting vulnerability in Admin Panel allowing script injection",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "High",
+      "status": "Open",
+      "source": "nvd"
+    }
+  ]
+}
