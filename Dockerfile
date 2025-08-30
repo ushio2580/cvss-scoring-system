@@ -18,6 +18,6 @@ WORKDIR /app/backend
 EXPOSE $PORT
 
 # Start the application
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:$PORT"]
+CMD gunicorn app:app --bind 0.0.0.0:$PORT --workers 1
 # Updated Dockerfile for Railway deployment
 # Updated Dockerfile for Railway deployment
