@@ -12,12 +12,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
-# Change to backend directory and set Python path
+# Change to backend directory
 WORKDIR /app/backend
-ENV PYTHONPATH=/app/backend
 
 # Expose port
 EXPOSE $PORT
 
-# Start the application with proper command format
-CMD gunicorn app:app --bind 0.0.0.0:$PORT --workers 1
+# Start the application using wsgi.py
+CMD gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 1
