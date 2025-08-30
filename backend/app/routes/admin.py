@@ -3,7 +3,9 @@ from app import db
 from app.models.user import User, UserRole
 from app.models.vulnerability import Vulnerability, Severity, Status, Source
 from app.models.audit_log import AuditLog
+from app.utils.data_persistence import DataPersistence
 import json
+import os
 
 admin_bp = Blueprint('admin', __name__)
 
@@ -129,4 +131,35 @@ def health_check():
         return jsonify({
             'status': 'unhealthy',
             'error': str(e)
+        }), 500
+
+@admin_bp.route('/database-status', methods=['GET'])
+def database_status():
+    """Get detailed database status and information"""
+    try:
+        # Get database info
+        db_info = DataPersistence.get_database_info()
+        
+        # Get database type
+        database_type = 'PostgreSQL' if os.environ.get('DATABASE_URL') else 'SQLite'
+        
+        # Check if data persists
+        data_persistence = {
+            'database_type': database_type,
+            'is_persistent': database_type == 'PostgreSQL',
+            'explanation': 'PostgreSQL data persists between restarts, SQLite data may be lost' if database_type == 'SQLite' else 'PostgreSQL data is persistent and survives restarts'
+        }
+        
+        return jsonify({
+            'database_info': db_info,
+            'data_persistence': data_persistence,
+            'environment': {
+                'has_database_url': bool(os.environ.get('DATABASE_URL')),
+                'database_url_set': 'Yes' if os.environ.get('DATABASE_URL') else 'No'
+            }
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'error': f'Failed to get database status: {str(e)}'
         }), 500
