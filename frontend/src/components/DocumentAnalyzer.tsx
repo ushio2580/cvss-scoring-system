@@ -74,7 +74,7 @@ const DocumentAnalyzer: React.FC = () => {
 
   const handleAnalyze = async () => {
     if (!file) {
-      setError('Por favor selecciona un archivo');
+      setError('Please select a file');
       return;
     }
 
@@ -98,10 +98,10 @@ const DocumentAnalyzer: React.FC = () => {
       if (response.ok) {
         setResult(data.result);
       } else {
-        setError(data.error || 'Error al analizar el documento');
+        setError(data.error || 'Error analyzing document');
       }
     } catch (error) {
-      setError('Error de conexión al analizar el documento');
+      setError('Connection error while analyzing document');
     } finally {
       setIsAnalyzing(false);
     }
@@ -203,7 +203,7 @@ const DocumentAnalyzer: React.FC = () => {
     return (
       <ResponsiveWrapper>
         <div className="text-center py-8">
-          <p className="text-gray-600">Por favor inicia sesión para acceder al analizador de documentos.</p>
+          <p className="text-gray-600">Please log in to access the document analyzer.</p>
         </div>
       </ResponsiveWrapper>
     );
@@ -221,23 +221,23 @@ const DocumentAnalyzer: React.FC = () => {
             className="flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver al Dashboard
+            Back to Dashboard
           </ResponsiveButton>
           <div className="flex-1 text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Analizador de Documentos
+            Document Analyzer
           </h1>
           <p className="text-gray-600">
-            Sube documentos PDF o Word para detectar vulnerabilidades automáticamente
+            Upload PDF or Word documents to automatically detect vulnerabilities
           </p>
           </div>
         </div>
 
-        {/* Formatos soportados */}
+        {/* Supported Formats */}
         {supportedFormats && (
           <ResponsiveCard>
             <div className="bg-blue-50 p-4 rounded-lg">
-              <h3 className="font-semibold text-blue-900 mb-2">Formatos Soportados</h3>
+              <h3 className="font-semibold text-blue-900 mb-2">Supported Formats</h3>
               <div className="flex flex-wrap gap-2 mb-2">
                 {supportedFormats.supported_formats.map((format) => (
                   <span key={format} className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
@@ -246,7 +246,7 @@ const DocumentAnalyzer: React.FC = () => {
                 ))}
               </div>
               <p className="text-sm text-blue-700">
-                Tamaño máximo: {supportedFormats.max_file_size_mb}MB
+                Maximum size: {supportedFormats.max_file_size_mb}MB
               </p>
             </div>
           </ResponsiveCard>
@@ -255,7 +255,7 @@ const DocumentAnalyzer: React.FC = () => {
         {/* Upload Section */}
         <ResponsiveCard>
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Seleccionar Documento</h2>
+            <h2 className="text-xl font-semibold">Select Document</h2>
             
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
               <input
@@ -273,12 +273,12 @@ const DocumentAnalyzer: React.FC = () => {
                   </svg>
                   <div className="text-sm text-gray-600">
                     <span className="font-medium text-blue-600 hover:text-blue-500">
-                      Haz clic para subir
+                      Click to upload
                     </span>
-                    {' '}o arrastra y suelta
+                    {' '}or drag and drop
                   </div>
                   <p className="text-xs text-gray-500">
-                    PDF, DOC, DOCX hasta {supportedFormats?.max_file_size_mb || 16}MB
+                    PDF, DOC, DOCX up to {supportedFormats?.max_file_size_mb || 16}MB
                   </p>
                 </div>
               </label>
@@ -295,7 +295,7 @@ const DocumentAnalyzer: React.FC = () => {
                     onClick={handleClear}
                     className="text-red-600 hover:text-red-800 text-sm"
                   >
-                    Eliminar
+                    Remove
                   </button>
                 </div>
               </div>
@@ -313,10 +313,10 @@ const DocumentAnalyzer: React.FC = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Analizando...
+                    Analyzing...
                   </>
                 ) : (
-                  'Analizar Documento'
+                  'Analyze Document'
                 )}
               </ResponsiveButton>
             </div>
@@ -355,7 +355,7 @@ const DocumentAnalyzer: React.FC = () => {
                   <div className={`text-2xl font-bold ${getScoreColor(result.cvss_score)}`}>
                     {result.cvss_score}
                   </div>
-                  <div className="text-sm text-gray-500">Score CVSS</div>
+                  <div className="text-sm text-gray-500">CVSS Score</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                   <div className={`text-2xl font-bold ${getSeverityColor(result.severity).split(' ')[0]}`}>
@@ -368,7 +368,7 @@ const DocumentAnalyzer: React.FC = () => {
 
             {/* Vulnerabilities Detected */}
             <ResponsiveCard>
-              <h2 className="text-xl font-semibold mb-4">Vulnerabilidades Detectadas</h2>
+              <h2 className="text-xl font-semibold mb-4">Detected Vulnerabilities</h2>
               {result.analysis.vulnerability_types.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {result.analysis.vulnerability_types.map((type, index) => (
@@ -389,14 +389,14 @@ const DocumentAnalyzer: React.FC = () => {
                   <svg className="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p>No se detectaron vulnerabilidades específicas</p>
+                  <p>No specific vulnerabilities detected</p>
                 </div>
               )}
             </ResponsiveCard>
 
             {/* CVSS Components */}
             <ResponsiveCard>
-              <h2 className="text-xl font-semibold mb-4">Componentes CVSS</h2>
+              <h2 className="text-xl font-semibold mb-4">CVSS Components</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {Object.entries(result.analysis.cvss_components).map(([component, value]) => (
                   <div key={component} className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
@@ -413,7 +413,7 @@ const DocumentAnalyzer: React.FC = () => {
 
             {/* Recommendations */}
             <ResponsiveCard>
-              <h2 className="text-xl font-semibold mb-4">Recomendaciones</h2>
+              <h2 className="text-xl font-semibold mb-4">Recommendations</h2>
               <div className="space-y-3">
                 {result.recommendations.map((recommendation, index) => (
                   <div key={index} className="flex items-start p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
@@ -428,7 +428,7 @@ const DocumentAnalyzer: React.FC = () => {
 
             {/* Text Preview */}
             <ResponsiveCard>
-              <h2 className="text-xl font-semibold mb-4">Vista Previa del Texto Extraído</h2>
+              <h2 className="text-xl font-semibold mb-4">Extracted Text Preview</h2>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <pre className="text-sm text-gray-700 whitespace-pre-wrap font-mono">
                   {result.extracted_text_preview}
