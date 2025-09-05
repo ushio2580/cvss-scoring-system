@@ -24,7 +24,7 @@ import { AddVulnerabilityModal } from '@/components/AddVulnerabilityModal';
 import { EditVulnerabilityModal } from '@/components/EditVulnerabilityModal';
 import { VulnerabilityEvaluations } from '@/components/VulnerabilityEvaluations';
 import { BulkUploadModal } from '@/components/BulkUploadModal';
-import { formatDate, formatScore, getSeverityColor, getStatusColor } from '../lib/utils';
+import { formatDate, formatScore, getSeverityColor, getStatusColor } from '../lib';
 import { Vulnerability } from '@/types';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
