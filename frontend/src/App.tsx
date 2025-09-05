@@ -9,6 +9,7 @@ import { Login } from '@/pages/Login';
 import AuditLogs from '@/pages/AuditLogs';
 import VulnerabilityHistory from '@/pages/VulnerabilityHistory';
 import DatabaseManager from '@/pages/DatabaseManager';
+import DocumentAnalyzer from '@/components/DocumentAnalyzer';
 import { Toaster } from 'sonner';
 import './index.css';
 
@@ -84,6 +85,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <DatabaseManager />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/document-analyzer" 
+        element={
+          <ProtectedRoute>
+            <DocumentAnalyzer />
           </ProtectedRoute>
         } 
       />

@@ -16,7 +16,8 @@ import {
   List,
   Upload,
   Activity,
-  Database
+  Database,
+  FileSearch
 } from 'lucide-react';
 import { apiService } from '@/services/api';
 import { useAuth } from '@/contexts/AuthContext';
@@ -222,6 +223,15 @@ export const Dashboard: React.FC = () => {
                     Database Manager
                   </Button>
                 )}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => navigate('/document-analyzer')}
+                  className="glass"
+                >
+                  <FileSearch className="h-4 w-4 mr-2" />
+                  Document Analyzer
+                </Button>
                 <Button
                   variant="outline"
                   size="sm"

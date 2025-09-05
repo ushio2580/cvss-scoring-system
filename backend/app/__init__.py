@@ -92,6 +92,7 @@ def create_app(config_name=None):
     from .routes.database_manager import database_bp
     from .routes.evaluations import evaluations_bp
     from .routes.admin import admin_bp
+    from .routes.document_analyzer import document_analyzer_bp
     
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
@@ -104,6 +105,7 @@ def create_app(config_name=None):
     app.register_blueprint(database_bp, url_prefix='/api/database')
     app.register_blueprint(evaluations_bp, url_prefix='/api/evaluations')
     app.register_blueprint(admin_bp, url_prefix='/api/admin')
+    app.register_blueprint(document_analyzer_bp, url_prefix='/api/documents')
     
     # Import models to ensure they are registered with SQLAlchemy
     from .models.user import User
