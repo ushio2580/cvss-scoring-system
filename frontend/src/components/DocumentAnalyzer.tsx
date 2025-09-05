@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useResponsive } from '../hooks/useResponsive';
 import { ResponsiveWrapper, ResponsiveCard, ResponsiveButton } from './ui/responsive-wrapper';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 interface DocumentAnalysisResult {
   filename: string;
@@ -36,6 +38,7 @@ interface SupportedFormats {
 const DocumentAnalyzer: React.FC = () => {
   const { user } = useAuth();
   const { isMobile, isTablet } = useResponsive();
+  const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<DocumentAnalysisResult | null>(null);
@@ -210,13 +213,24 @@ const DocumentAnalyzer: React.FC = () => {
     <ResponsiveWrapper>
       <div className="space-y-6">
         {/* Header */}
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="flex items-center justify-between mb-6">
+          <ResponsiveButton
+            variant="outline"
+            size="sm"
+            onClick={() => navigate('/dashboard')}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Volver al Dashboard
+          </ResponsiveButton>
+          <div className="flex-1 text-center">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Analizador de Documentos
           </h1>
           <p className="text-gray-600">
             Sube documentos PDF o Word para detectar vulnerabilidades automáticamente
           </p>
+          </div>
         </div>
 
         {/* Formatos soportados */}

@@ -32,7 +32,7 @@ import { BulkUploadModal } from '@/components/BulkUploadModal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { formatDate, formatScore, getSeverityColor, getStatusColor } from '@/lib/utils.js';
+import { formatDate, formatScore, getSeverityColor, getStatusColor } from '@/lib/utils';
 import { Vulnerability } from '@/types';
 import { useNavigate } from 'react-router-dom';
 
