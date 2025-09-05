@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '../../lib';
+import { cn } from '../../utils';
 import { motion } from 'framer-motion';
 
 interface KPICardProps {
