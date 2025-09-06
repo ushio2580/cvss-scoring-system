@@ -134,28 +134,28 @@ const DocumentAnalysisHistory: React.FC = () => {
         <ResponsiveCard>
           <div className="p-6">
             <h2 className="text-xl font-semibold mb-4">Summary</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">{analyses.length}</div>
-                <div className="text-sm text-blue-700">Total Analyses</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 min-h-[100px] flex flex-col justify-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">{analyses.length}</div>
+                <div className="text-sm text-blue-700 font-medium break-words">Total Analyses</div>
               </div>
-              <div className="text-center p-4 bg-red-50 rounded-lg">
-                <div className="text-2xl font-bold text-red-600">
+              <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl border border-red-200 min-h-[100px] flex flex-col justify-center">
+                <div className="text-3xl font-bold text-red-600 mb-2">
                   {analyses.filter(a => a.severity.toLowerCase() === 'critical').length}
                 </div>
-                <div className="text-sm text-red-700">Critical</div>
+                <div className="text-sm text-red-700 font-medium break-words">Critical</div>
               </div>
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <div className="text-2xl font-bold text-orange-600">
+              <div className="text-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl border border-orange-200 min-h-[100px] flex flex-col justify-center">
+                <div className="text-3xl font-bold text-orange-600 mb-2">
                   {analyses.filter(a => a.severity.toLowerCase() === 'high').length}
                 </div>
-                <div className="text-sm text-orange-700">High</div>
+                <div className="text-sm text-orange-700 font-medium break-words">High</div>
               </div>
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <div className="text-2xl font-bold text-green-600">
+              <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200 min-h-[100px] flex flex-col justify-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">
                   {analyses.reduce((sum, a) => sum + a.vulnerability_types.length, 0)}
                 </div>
-                <div className="text-sm text-green-700">Total Vulnerabilities</div>
+                <div className="text-sm text-green-700 font-medium break-words">Total Vulnerabilities</div>
               </div>
             </div>
           </div>
