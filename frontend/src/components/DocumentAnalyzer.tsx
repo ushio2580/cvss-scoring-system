@@ -44,6 +44,7 @@ const DocumentAnalyzer: React.FC = () => {
   const [result, setResult] = useState<DocumentAnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [supportedFormats, setSupportedFormats] = useState<SupportedFormats | null>(null);
+  const [savedToDatabase, setSavedToDatabase] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Cargar formatos soportados al montar el componente
@@ -97,6 +98,12 @@ const DocumentAnalyzer: React.FC = () => {
 
       if (response.ok) {
         setResult(data.result);
+        // Verificar si se guardó en la base de datos
+        if (data.result.analysis_id) {
+          setSavedToDatabase(true);
+        } else if (data.result.db_save_error) {
+          setSavedToDatabase(false);
+        }
       } else {
         setError(data.error || 'Error analyzing document');
       }
@@ -111,6 +118,7 @@ const DocumentAnalyzer: React.FC = () => {
     setFile(null);
     setResult(null);
     setError(null);
+    setSavedToDatabase(false);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -345,11 +353,21 @@ const DocumentAnalyzer: React.FC = () => {
           <div className="space-y-6">
             {/* Summary */}
             <ResponsiveCard>
-              <h2 className="text-xl font-semibold mb-4">Resumen del Análisis</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold">Analysis Summary</h2>
+                {savedToDatabase && (
+                  <div className="flex items-center text-green-600 text-sm">
+                    <svg className="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Saved to database
+                  </div>
+                )}
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                   <div className="text-2xl font-bold text-gray-900">{result.filename}</div>
-                  <div className="text-sm text-gray-500">Archivo</div>
+                  <div className="text-sm text-gray-500">File</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                   <div className={`text-2xl font-bold ${getScoreColor(result.cvss_score)}`}>

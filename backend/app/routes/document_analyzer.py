@@ -7,6 +7,7 @@ from datetime import datetime
 from app import db
 from app.models.vulnerability import Vulnerability, Severity, Status, Source
 from app.models.user import User
+from app.models.document_analysis import DocumentAnalysis
 from app.utils.audit_decorator import audit_log
 from app.utils.ip_utils import get_client_ip
 import PyPDF2
@@ -282,6 +283,9 @@ def analyze_document():
             else:
                 severity = 'low'
             
+            # Generar recomendaciones
+            recommendations = generate_recommendations(analysis['vulnerability_types'], cvss_score)
+            
             # Crear resultado
             result = {
                 'filename': filename,
@@ -290,14 +294,49 @@ def analyze_document():
                 'analysis': analysis,
                 'cvss_score': cvss_score,
                 'severity': severity,
-                'recommendations': generate_recommendations(analysis['vulnerability_types'], cvss_score),
+                'recommendations': recommendations,
                 'extracted_text_preview': text[:500] + '...' if len(text) > 500 else text
             }
+            
+            # Guardar análisis en la base de datos
+            try:
+                # Obtener el usuario actual (asumiendo que hay autenticación)
+                # Por ahora usaremos un usuario por defecto, pero esto debería venir del token JWT
+                user_id = 1  # TODO: Obtener del token JWT cuando esté implementado
+                
+                # Determinar el tipo de archivo
+                file_type = filename.lower().split('.')[-1]
+                
+                # Crear registro en la base de datos
+                document_analysis = DocumentAnalysis(
+                    user_id=user_id,
+                    filename=filename,
+                    file_size=file_size,
+                    file_type=file_type,
+                    extracted_text=text,  # Guardar texto completo
+                    extracted_text_preview=text[:500] + '...' if len(text) > 500 else text,
+                    vulnerability_types=analysis['vulnerability_types'],
+                    cvss_score=cvss_score,
+                    severity=severity,
+                    cvss_components=analysis['cvss_components'],
+                    recommendations=recommendations
+                )
+                
+                db.session.add(document_analysis)
+                db.session.commit()
+                
+                # Agregar el ID del análisis al resultado
+                result['analysis_id'] = document_analysis.id
+                
+            except Exception as db_error:
+                # Si hay error al guardar en la base de datos, continuar con el análisis
+                current_app.logger.error(f"Error saving analysis to database: {str(db_error)}")
+                result['db_save_error'] = 'Analysis completed but could not be saved to database'
             
             return jsonify({
                 'success': True,
                 'result': result,
-                'message': 'Documento analizado exitosamente'
+                'message': 'Document analyzed successfully'
             }), 200
             
         finally:
@@ -355,5 +394,38 @@ def get_supported_formats():
     return jsonify({
         'supported_formats': list(ALLOWED_EXTENSIONS),
         'max_file_size_mb': MAX_FILE_SIZE // (1024 * 1024),
-        'description': 'Formatos soportados para análisis de vulnerabilidades'
+        'description': 'Supported formats for vulnerability analysis'
     }), 200
+
+@document_analyzer_bp.route('/history', methods=['GET'])
+@audit_log('document_analysis_history')
+def get_analysis_history():
+    """Obtiene el historial de análisis de documentos"""
+    try:
+        # Por ahora obtenemos todos los análisis, pero esto debería filtrarse por usuario
+        # TODO: Implementar autenticación JWT y filtrar por usuario
+        analyses = DocumentAnalysis.query.order_by(DocumentAnalysis.created_at.desc()).limit(50).all()
+        
+        return jsonify({
+            'success': True,
+            'analyses': [analysis.to_dict() for analysis in analyses],
+            'total': len(analyses)
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'error': f'Error retrieving analysis history: {str(e)}'}), 500
+
+@document_analyzer_bp.route('/history/<int:analysis_id>', methods=['GET'])
+@audit_log('document_analysis_detail')
+def get_analysis_detail(analysis_id):
+    """Obtiene los detalles de un análisis específico"""
+    try:
+        analysis = DocumentAnalysis.query.get_or_404(analysis_id)
+        
+        return jsonify({
+            'success': True,
+            'analysis': analysis.to_dict()
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'error': f'Error retrieving analysis details: {str(e)}'}), 500

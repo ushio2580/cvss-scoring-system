@@ -114,6 +114,7 @@ def create_app(config_name=None):
     from .models.audit_log import AuditLog
     from .models.vulnerability_history import VulnerabilityHistory
     from .models.database_info import DatabaseQuery
+    from .models.document_analysis import DocumentAnalysis
     
     # Create database tables
     with app.app_context():
