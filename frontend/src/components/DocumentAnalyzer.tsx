@@ -355,18 +355,20 @@ const DocumentAnalyzer: React.FC = () => {
         )}
 
         {/* Results */}
-        {result && (
-          <div className="space-y-6">
-            {/* Debug info - remove in production */}
-            <div className="bg-yellow-100 p-2 rounded text-xs">
-              Debug: Result state is set. Result keys: {Object.keys(result).join(', ')}
-              <br />
-              Result exists: {result ? 'YES' : 'NO'}
-              <br />
-              Filename: {result.filename}
-              <br />
-              CVSS Score: {result.cvss_score}
-            </div>
+        <div className="space-y-6">
+          {/* Debug info - remove in production */}
+          <div className="bg-yellow-100 p-2 rounded text-xs">
+            Debug: Result state is set. Result keys: {result ? Object.keys(result).join(', ') : 'NO RESULT'}
+            <br />
+            Result exists: {result ? 'YES' : 'NO'}
+            <br />
+            Filename: {result?.filename || 'NO FILENAME'}
+            <br />
+            CVSS Score: {result?.cvss_score || 'NO SCORE'}
+          </div>
+          
+          {result && (
+            <div className="space-y-6">
             {/* Summary */}
             <ResponsiveCard>
               <div className="flex items-center justify-between mb-4">
@@ -469,8 +471,9 @@ const DocumentAnalyzer: React.FC = () => {
                 </pre>
               </div>
             </ResponsiveCard>
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
     </ResponsiveWrapper>
   );
