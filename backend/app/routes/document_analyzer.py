@@ -354,37 +354,37 @@ def generate_recommendations(vulnerability_types, cvss_score):
     recommendations = []
     
     if 'sql_injection' in vulnerability_types:
-        recommendations.append("Implementar prepared statements y validación de entrada")
+        recommendations.append("Implement prepared statements and input validation")
     
     if 'xss' in vulnerability_types:
-        recommendations.append("Implementar sanitización de entrada y Content Security Policy")
+        recommendations.append("Implement input sanitization and Content Security Policy")
     
     if 'csrf' in vulnerability_types:
-        recommendations.append("Implementar tokens CSRF y validación de referer")
+        recommendations.append("Implement CSRF tokens and referer validation")
     
     if 'authentication' in vulnerability_types:
-        recommendations.append("Implementar autenticación multi-factor y políticas de contraseñas")
+        recommendations.append("Implement multi-factor authentication and password policies")
     
     if 'authorization' in vulnerability_types:
-        recommendations.append("Implementar control de acceso basado en roles (RBAC)")
+        recommendations.append("Implement role-based access control (RBAC)")
     
     if 'injection' in vulnerability_types:
-        recommendations.append("Implementar validación y sanitización de entrada")
+        recommendations.append("Implement input validation and sanitization")
     
     if 'crypto' in vulnerability_types:
-        recommendations.append("Usar algoritmos de cifrado seguros y gestión adecuada de claves")
+        recommendations.append("Use secure encryption algorithms and proper key management")
     
     if 'network' in vulnerability_types:
-        recommendations.append("Implementar HTTPS, certificados SSL y protección contra MITM")
+        recommendations.append("Implement HTTPS, SSL certificates and MITM protection")
     
     if cvss_score >= 9.0:
-        recommendations.append("URGENTE: Esta vulnerabilidad requiere atención inmediata")
+        recommendations.append("URGENT: This vulnerability requires immediate attention")
     elif cvss_score >= 7.0:
-        recommendations.append("ALTA PRIORIDAD: Esta vulnerabilidad debe ser corregida pronto")
+        recommendations.append("HIGH PRIORITY: This vulnerability should be fixed soon")
     elif cvss_score >= 4.0:
-        recommendations.append("PRIORIDAD MEDIA: Esta vulnerabilidad debe ser corregida en el próximo ciclo")
+        recommendations.append("MEDIUM PRIORITY: This vulnerability should be fixed in the next cycle")
     else:
-        recommendations.append("PRIORIDAD BAJA: Esta vulnerabilidad puede ser corregida cuando sea conveniente")
+        recommendations.append("LOW PRIORITY: This vulnerability can be fixed when convenient")
     
     return recommendations
 

@@ -131,7 +131,7 @@ const DocumentAnalyzer: React.FC = () => {
 
     setIsConverting(true);
     try {
-      const response = await fetch(`${API_CONFIG.BASE_URL}/vulnerabilities`, {
+      const response = await fetch(`${API_CONFIG.BASE_URL}/vulns`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -205,42 +205,42 @@ const DocumentAnalyzer: React.FC = () => {
   const translateCvssComponent = (component: string, value: string) => {
     const translations: { [key: string]: { [key: string]: string } } = {
       'attack_vector': {
-        'network': 'Red',
-        'adjacent': 'Adyacente',
+        'network': 'Network',
+        'adjacent': 'Adjacent',
         'local': 'Local',
-        'physical': 'Físico'
+        'physical': 'Physical'
       },
       'attack_complexity': {
-        'low': 'Baja',
-        'high': 'Alta'
+        'low': 'Low',
+        'high': 'High'
       },
       'privileges_required': {
-        'none': 'Ninguno',
-        'low': 'Bajo',
-        'high': 'Alto'
+        'none': 'None',
+        'low': 'Low',
+        'high': 'High'
       },
       'user_interaction': {
-        'none': 'Ninguna',
-        'required': 'Requerida'
+        'none': 'None',
+        'required': 'Required'
       },
       'scope': {
-        'unchanged': 'Sin Cambio',
-        'changed': 'Con Cambio'
+        'unchanged': 'Unchanged',
+        'changed': 'Changed'
       },
       'confidentiality': {
-        'none': 'Ninguno',
-        'low': 'Bajo',
-        'high': 'Alto'
+        'none': 'None',
+        'low': 'Low',
+        'high': 'High'
       },
       'integrity': {
-        'none': 'Ninguno',
-        'low': 'Bajo',
-        'high': 'Alto'
+        'none': 'None',
+        'low': 'Low',
+        'high': 'High'
       },
       'availability': {
-        'none': 'Ninguno',
-        'low': 'Bajo',
-        'high': 'Alto'
+        'none': 'None',
+        'low': 'Low',
+        'high': 'High'
       }
     };
     return translations[component]?.[value] || value;
@@ -437,7 +437,7 @@ const DocumentAnalyzer: React.FC = () => {
                   <div className={`text-2xl font-bold ${getSeverityColor(result.severity).split(' ')[0]}`}>
                     {result.severity.toUpperCase()}
                   </div>
-                  <div className="text-sm text-gray-500">Severidad</div>
+                  <div className="text-sm text-gray-500">Severity</div>
                 </div>
               </div>
             </ResponsiveCard>
