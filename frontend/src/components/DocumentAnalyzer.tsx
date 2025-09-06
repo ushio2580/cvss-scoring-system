@@ -357,7 +357,7 @@ const DocumentAnalyzer: React.FC = () => {
         {/* Results */}
         <div className="space-y-6">
           {/* Debug info - remove in production */}
-          <div className="bg-yellow-100 p-2 rounded text-xs">
+          <div className="bg-blue-100 p-2 rounded text-xs text-blue-800">
             Debug: Result state is set. Result keys: {result ? Object.keys(result).join(', ') : 'NO RESULT'}
             <br />
             Result exists: {result ? 'YES' : 'NO'}
@@ -365,6 +365,10 @@ const DocumentAnalyzer: React.FC = () => {
             Filename: {result?.filename || 'NO FILENAME'}
             <br />
             CVSS Score: {result?.cvss_score || 'NO SCORE'}
+          </div>
+          
+          <div className="bg-green-100 p-2 rounded text-xs text-green-800">
+            About to render results section. Result exists: {result ? 'YES' : 'NO'}
           </div>
           
           {result && (
