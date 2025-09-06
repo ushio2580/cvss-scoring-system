@@ -98,8 +98,6 @@ const DocumentAnalyzer: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Analysis response:', data);
-        console.log('Result data:', data.result);
         setResult(data.result);
         // Verificar si se guardó en la base de datos
         if (data.result.analysis_id) {
@@ -108,7 +106,6 @@ const DocumentAnalyzer: React.FC = () => {
           setSavedToDatabase(false);
         }
       } else {
-        console.error('Analysis error:', data);
         setError(data.error || 'Error analyzing document');
       }
     } catch (error) {
@@ -221,8 +218,6 @@ const DocumentAnalyzer: React.FC = () => {
     );
   }
 
-  console.log('DocumentAnalyzer render - result:', result, 'savedToDatabase:', savedToDatabase);
-  
   return (
     <ResponsiveWrapper>
       <div className="space-y-6">
@@ -355,24 +350,8 @@ const DocumentAnalyzer: React.FC = () => {
         )}
 
         {/* Results */}
-        <div className="space-y-6">
-          {/* Debug info - remove in production */}
-          <div className="bg-blue-100 p-2 rounded text-xs text-blue-800">
-            Debug: Result state is set. Result keys: {result ? Object.keys(result).join(', ') : 'NO RESULT'}
-            <br />
-            Result exists: {result ? 'YES' : 'NO'}
-            <br />
-            Filename: {result?.filename || 'NO FILENAME'}
-            <br />
-            CVSS Score: {result?.cvss_score || 'NO SCORE'}
-          </div>
-          
-          <div className="bg-green-100 p-2 rounded text-xs text-green-800">
-            About to render results section. Result exists: {result ? 'YES' : 'NO'}
-          </div>
-          
-          {result && (
-            <div className="space-y-6">
+        {result && (
+          <div className="space-y-6">
             {/* Summary */}
             <ResponsiveCard>
               <div className="flex items-center justify-between mb-4">
@@ -475,9 +454,8 @@ const DocumentAnalyzer: React.FC = () => {
                 </pre>
               </div>
             </ResponsiveCard>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </ResponsiveWrapper>
   );
