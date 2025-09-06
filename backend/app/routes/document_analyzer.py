@@ -179,6 +179,10 @@ def analyze_vulnerability_text(text):
         if component not in cvss_components:
             cvss_components[component] = default_value
     
+    # Debug: Log what was detected
+    current_app.logger.info(f"Detected vulnerabilities: {detected_vulnerabilities}")
+    current_app.logger.info(f"Detected severity: {detected_severity}")
+    
     return {
         'vulnerability_types': detected_vulnerabilities,
         'severity': detected_severity,

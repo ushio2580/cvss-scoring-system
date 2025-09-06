@@ -106,7 +106,7 @@ const DocumentAnalysisCard: React.FC = () => {
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Recent Document Analyses</h3>
           <a 
-            href="/document-analyzer" 
+            href="/document-analysis-history" 
             className="text-blue-600 hover:text-blue-800 text-sm font-medium"
           >
             View All →

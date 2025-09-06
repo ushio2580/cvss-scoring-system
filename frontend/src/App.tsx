@@ -10,6 +10,7 @@ import AuditLogs from '@/pages/AuditLogs';
 import VulnerabilityHistory from '@/pages/VulnerabilityHistory';
 import DatabaseManager from '@/pages/DatabaseManager';
 import DocumentAnalyzer from '@/components/DocumentAnalyzer';
+import DocumentAnalysisHistory from '@/pages/DocumentAnalysisHistory';
 import { Toaster } from 'sonner';
 import './index.css';
 
@@ -93,6 +94,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <DocumentAnalyzer />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/document-analysis-history" 
+        element={
+          <ProtectedRoute>
+            <DocumentAnalysisHistory />
           </ProtectedRoute>
         } 
       />
