@@ -221,6 +221,8 @@ const DocumentAnalyzer: React.FC = () => {
     );
   }
 
+  console.log('DocumentAnalyzer render - result:', result, 'savedToDatabase:', savedToDatabase);
+  
   return (
     <ResponsiveWrapper>
       <div className="space-y-6">
@@ -356,11 +358,15 @@ const DocumentAnalyzer: React.FC = () => {
         {result && (
           <div className="space-y-6">
             {/* Debug info - remove in production */}
-            {process.env.NODE_ENV === 'development' && (
-              <div className="bg-yellow-100 p-2 rounded text-xs">
-                Debug: Result state is set. Result keys: {Object.keys(result).join(', ')}
-              </div>
-            )}
+            <div className="bg-yellow-100 p-2 rounded text-xs">
+              Debug: Result state is set. Result keys: {Object.keys(result).join(', ')}
+              <br />
+              Result exists: {result ? 'YES' : 'NO'}
+              <br />
+              Filename: {result.filename}
+              <br />
+              CVSS Score: {result.cvss_score}
+            </div>
             {/* Summary */}
             <ResponsiveCard>
               <div className="flex items-center justify-between mb-4">
