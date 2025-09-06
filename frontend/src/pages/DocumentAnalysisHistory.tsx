@@ -103,8 +103,8 @@ const DocumentAnalysisHistory: React.FC = () => {
     <ResponsiveWrapper>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-6">
             <ResponsiveButton
               variant="outline"
               size="sm"
@@ -114,18 +114,20 @@ const DocumentAnalysisHistory: React.FC = () => {
               <ArrowLeft className="h-4 w-4" />
               Back to Dashboard
             </ResponsiveButton>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Document Analysis History</h1>
-              <p className="text-gray-600">View all document analysis results</p>
-            </div>
+            <ResponsiveButton
+              onClick={() => navigate('/document-analyzer')}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              <FileText className="h-4 w-4" />
+              New Analysis
+            </ResponsiveButton>
           </div>
-          <ResponsiveButton
-            onClick={() => navigate('/document-analyzer')}
-            className="flex items-center gap-2"
-          >
-            <FileText className="h-4 w-4" />
-            New Analysis
-          </ResponsiveButton>
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Document Analysis History</h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              View and manage all your document analysis results
+            </p>
+          </div>
         </div>
 
         {/* Summary */}
@@ -174,74 +176,89 @@ const DocumentAnalysisHistory: React.FC = () => {
             </ResponsiveCard>
           ) : (
             analyses.map((analysis) => (
-              <ResponsiveCard key={analysis.id}>
+              <ResponsiveCard key={analysis.id} className="hover:shadow-lg transition-shadow">
                 <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-6">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900">{analysis.filename}</h3>
+                      <div className="flex items-center gap-3 mb-3">
+                        <h3 className="text-xl font-semibold text-gray-900">{analysis.filename}</h3>
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${getSeverityColor(analysis.severity)}`}>
                           {analysis.severity.toUpperCase()}
                         </span>
                       </div>
-                      <div className="flex items-center gap-6 text-sm text-gray-500 mb-3">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          {formatDate(analysis.created_at)}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4 text-blue-500" />
+                          <span>{formatDate(analysis.created_at)}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Shield className="h-4 w-4" />
-                          CVSS: {analysis.cvss_score}
+                        <div className="flex items-center gap-2">
+                          <Shield className="h-4 w-4 text-orange-500" />
+                          <span className="font-medium">CVSS: {analysis.cvss_score}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <FileText className="h-4 w-4" />
-                          {formatFileSize(analysis.file_size)}
+                        <div className="flex items-center gap-2">
+                          <FileText className="h-4 w-4 text-green-500" />
+                          <span>{formatFileSize(analysis.file_size)}</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Vulnerabilities */}
-                  <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-700 mb-2">Detected Vulnerabilities:</h4>
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                      <Shield className="h-4 w-4 text-red-500" />
+                      Detected Vulnerabilities
+                    </h4>
                     {analysis.vulnerability_types.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
                         {analysis.vulnerability_types.map((type, index) => (
-                          <span key={index} className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs">
+                          <span key={index} className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
                             {type.replace('_', ' ')}
                           </span>
                         ))}
                       </div>
                     ) : (
-                      <span className="text-gray-500 text-sm">No specific vulnerabilities detected</span>
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                        <span className="text-green-700 text-sm font-medium">No specific vulnerabilities detected</span>
+                      </div>
                     )}
                   </div>
 
                   {/* Recommendations */}
                   {analysis.recommendations && analysis.recommendations.length > 0 && (
-                    <div className="mb-4">
-                      <h4 className="text-sm font-medium text-gray-700 mb-2">Recommendations:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        {analysis.recommendations.slice(0, 2).map((rec, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <span className="text-yellow-500 mt-1">•</span>
-                            <span>{rec}</span>
-                          </li>
-                        ))}
-                        {analysis.recommendations.length > 2 && (
-                          <li className="text-gray-500 text-xs">
-                            +{analysis.recommendations.length - 2} more recommendations
-                          </li>
-                        )}
-                      </ul>
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                        <FileText className="h-4 w-4 text-yellow-500" />
+                        Recommendations
+                      </h4>
+                      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                        <ul className="text-sm text-gray-700 space-y-2">
+                          {analysis.recommendations.slice(0, 2).map((rec, index) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span className="text-yellow-600 mt-1 font-bold">•</span>
+                              <span>{rec}</span>
+                            </li>
+                          ))}
+                          {analysis.recommendations.length > 2 && (
+                            <li className="text-yellow-700 text-xs font-medium pt-2 border-t border-yellow-300">
+                              +{analysis.recommendations.length - 2} more recommendations
+                            </li>
+                          )}
+                        </ul>
+                      </div>
                     </div>
                   )}
 
                   {/* Text Preview */}
                   <div>
-                    <h4 className="text-sm font-medium text-gray-700 mb-2">Text Preview:</h4>
-                    <div className="bg-gray-50 p-3 rounded text-sm text-gray-600 max-h-20 overflow-hidden">
-                      {analysis.extracted_text_preview}
+                    <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-blue-500" />
+                      Text Preview
+                    </h4>
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                      <div className="text-sm text-gray-600 max-h-24 overflow-hidden leading-relaxed">
+                        {analysis.extracted_text_preview}
+                      </div>
                     </div>
                   </div>
                 </div>

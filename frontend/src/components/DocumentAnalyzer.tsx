@@ -260,23 +260,25 @@ const DocumentAnalyzer: React.FC = () => {
     <ResponsiveWrapper>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <ResponsiveButton
-            variant="outline"
-            size="sm"
-            onClick={() => navigate('/dashboard')}
-            className="flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Dashboard
-          </ResponsiveButton>
-          <div className="flex-1 text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Document Analyzer
-          </h1>
-          <p className="text-gray-600">
-            Upload PDF or Word documents to automatically detect vulnerabilities
-          </p>
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <ResponsiveButton
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/dashboard')}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Dashboard
+            </ResponsiveButton>
+          </div>
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Document Analyzer
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Upload PDF or Word documents to automatically detect vulnerabilities and generate CVSS scores
+            </p>
           </div>
         </div>
 
@@ -422,22 +424,20 @@ const DocumentAnalyzer: React.FC = () => {
                   </ResponsiveButton>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="text-2xl font-bold text-gray-900">{result.filename}</div>
-                  <div className="text-sm text-gray-500">File</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+                  <div className="text-lg font-semibold text-blue-900 mb-2">File</div>
+                  <div className="text-sm text-blue-700 break-words">{result.filename}</div>
                 </div>
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className={`text-2xl font-bold ${getScoreColor(result.cvss_score)}`}>
-                    {result.cvss_score}
-                  </div>
-                  <div className="text-sm text-gray-500">CVSS Score</div>
+                <div className="text-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl border border-orange-200">
+                  <div className="text-3xl font-bold text-orange-900 mb-2">{result.cvss_score}</div>
+                  <div className="text-sm text-orange-700 font-medium">CVSS Score</div>
                 </div>
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className={`text-2xl font-bold ${getSeverityColor(result.severity).split(' ')[0]}`}>
+                <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl border border-red-200">
+                  <div className={`text-2xl font-bold ${getSeverityColor(result.severity).split(' ')[0]} mb-2`}>
                     {result.severity.toUpperCase()}
                   </div>
-                  <div className="text-sm text-gray-500">Severity</div>
+                  <div className="text-sm text-red-700 font-medium">Severity</div>
                 </div>
               </div>
             </ResponsiveCard>
