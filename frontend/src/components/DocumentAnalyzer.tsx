@@ -97,6 +97,8 @@ const DocumentAnalyzer: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
+        console.log('Analysis response:', data);
+        console.log('Result data:', data.result);
         setResult(data.result);
         // Verificar si se guardó en la base de datos
         if (data.result.analysis_id) {
@@ -105,6 +107,7 @@ const DocumentAnalyzer: React.FC = () => {
           setSavedToDatabase(false);
         }
       } else {
+        console.error('Analysis error:', data);
         setError(data.error || 'Error analyzing document');
       }
     } catch (error) {
@@ -351,6 +354,12 @@ const DocumentAnalyzer: React.FC = () => {
         {/* Results */}
         {result && (
           <div className="space-y-6">
+            {/* Debug info - remove in production */}
+            {process.env.NODE_ENV === 'development' && (
+              <div className="bg-yellow-100 p-2 rounded text-xs">
+                Debug: Result state is set. Result keys: {Object.keys(result).join(', ')}
+              </div>
+            )}
             {/* Summary */}
             <ResponsiveCard>
               <div className="flex items-center justify-between mb-4">
