@@ -140,8 +140,8 @@ const DocumentAnalyzer: React.FC = () => {
         body: JSON.stringify({
           title: `Document Analysis: ${result.filename}`,
           description: `Vulnerability detected in document analysis:\n\n${result.extracted_text_preview}`,
-          severity: result.severity,
-          status: 'open',
+          severity: result.severity.charAt(0).toUpperCase() + result.severity.slice(1).toLowerCase(),
+          status: 'Open',
           source: 'document_analysis',
           cvss_score: result.cvss_score,
           recommendations: result.recommendations.join('\n\n')
