@@ -4,6 +4,7 @@ import { useResponsive } from '../hooks/useResponsive';
 import { ResponsiveWrapper, ResponsiveCard, ResponsiveButton } from './ui/responsive-wrapper';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { API_CONFIG } from '../config/api';
 
 interface DocumentAnalysisResult {
   filename: string;
@@ -54,7 +55,7 @@ const DocumentAnalyzer: React.FC = () => {
 
   const fetchSupportedFormats = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/documents/supported-formats`);
+      const response = await fetch(`${API_CONFIG.BASE_URL}/documents/supported-formats`);
       if (response.ok) {
         const data = await response.json();
         setSupportedFormats(data);
@@ -86,7 +87,7 @@ const DocumentAnalyzer: React.FC = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/documents/analyze`, {
+      const response = await fetch(`${API_CONFIG.BASE_URL}/documents/analyze`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
