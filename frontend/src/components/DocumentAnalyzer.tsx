@@ -46,6 +46,7 @@ const DocumentAnalyzer: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [supportedFormats, setSupportedFormats] = useState<SupportedFormats | null>(null);
   const [savedToDatabase, setSavedToDatabase] = useState<boolean>(false);
+  const [isConverting, setIsConverting] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Cargar formatos soportados al montar el componente
@@ -122,6 +123,43 @@ const DocumentAnalyzer: React.FC = () => {
     setSavedToDatabase(false);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
+    }
+  };
+
+  const handleConvertToVulnerability = async () => {
+    if (!result) return;
+
+    setIsConverting(true);
+    try {
+      const response = await fetch(`${API_CONFIG.BASE_URL}/vulnerabilities`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({
+          title: `Document Analysis: ${result.filename}`,
+          description: `Vulnerability detected in document analysis:\n\n${result.extracted_text_preview}`,
+          severity: result.severity,
+          status: 'open',
+          source: 'document_analysis',
+          cvss_score: result.cvss_score,
+          recommendations: result.recommendations.join('\n\n')
+        }),
+      });
+
+      if (response.ok) {
+        alert('Vulnerability added to dashboard successfully!');
+        // Optionally navigate to vulnerabilities page
+        // navigate('/vulnerabilities');
+      } else {
+        const errorData = await response.json();
+        alert(`Error adding vulnerability: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      alert('Error converting to vulnerability');
+    } finally {
+      setIsConverting(false);
     }
   };
 
@@ -356,14 +394,33 @@ const DocumentAnalyzer: React.FC = () => {
             <ResponsiveCard>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-semibold">Analysis Summary</h2>
-                {savedToDatabase && (
-                  <div className="flex items-center text-green-600 text-sm">
-                    <svg className="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    Saved to database
-                  </div>
-                )}
+                <div className="flex items-center gap-3">
+                  {savedToDatabase && (
+                    <div className="flex items-center text-green-600 text-sm">
+                      <svg className="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Saved to database
+                    </div>
+                  )}
+                  <ResponsiveButton
+                    onClick={handleConvertToVulnerability}
+                    disabled={isConverting}
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    {isConverting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Adding...
+                      </>
+                    ) : (
+                      'Add to Dashboard'
+                    )}
+                  </ResponsiveButton>
+                </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
