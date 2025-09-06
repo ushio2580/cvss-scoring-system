@@ -29,6 +29,7 @@ import { CVSSCalculator } from '@/components/CVSSCalculator';
 import { AddVulnerabilityModal } from '@/components/AddVulnerabilityModal';
 import { EditVulnerabilityModal } from '@/components/EditVulnerabilityModal';
 import { BulkUploadModal } from '@/components/BulkUploadModal';
+import DocumentAnalysisCard from '../components/Dashboard/DocumentAnalysisCard';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -286,6 +287,16 @@ export const Dashboard: React.FC = () => {
           <TrendChart data={dashboardData?.charts.trend_data || []} />
           <CVSSCalculator />
         </div>
+
+        {/* Document Analysis Results */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-8"
+        >
+          <DocumentAnalysisCard />
+        </motion.div>
 
         {/* Top Vulnerabilities */}
         <motion.div
