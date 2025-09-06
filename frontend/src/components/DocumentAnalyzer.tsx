@@ -473,13 +473,13 @@ const DocumentAnalyzer: React.FC = () => {
             {/* CVSS Components */}
             <ResponsiveCard>
               <h2 className="text-xl font-semibold mb-4">CVSS Components</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {Object.entries(result.analysis.cvss_components).map(([component, value]) => (
-                  <div key={component} className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                    <div className="text-sm font-medium text-blue-900 capitalize">
+                  <div key={component} className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl min-h-[80px] flex flex-col justify-center">
+                    <div className="text-xs font-medium text-blue-900 uppercase tracking-wide mb-1 break-words">
                       {component.replace('_', ' ')}
                     </div>
-                    <div className="text-lg font-semibold text-blue-700">
+                    <div className="text-base font-bold text-blue-800 break-words leading-tight">
                       {translateCvssComponent(component, value)}
                     </div>
                   </div>
