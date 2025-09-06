@@ -1,8 +1,8 @@
-# 📄 Analizador de Documentos - CVSS Scoring System
+# 📄 Document Analyzer - CVSS Scoring System
 
-## 🚀 **Nueva Funcionalidad Implementada**
+## 🚀 **Funcionalidad Completa Implementada**
 
-Se ha agregado un **Analizador de Documentos** que permite subir archivos PDF y Word para detectar automáticamente vulnerabilidades y generar evaluaciones CVSS.
+Se ha implementado un **Document Analyzer** completo que permite subir archivos PDF y Word para detectar automáticamente vulnerabilidades, generar evaluaciones CVSS, y gestionar los resultados con una arquitectura híbrida integrada al dashboard principal.
 
 ## ✨ **Características Principales**
 
@@ -39,10 +39,22 @@ El sistema genera recomendaciones específicas basadas en:
 - **Score CVSS calculado**
 - **Mejores prácticas de seguridad**
 
+### **🏗️ Arquitectura Híbrida**
+- **Almacenamiento separado** de análisis de documentos en tabla dedicada
+- **Vista en dashboard** con resumen de análisis recientes
+- **Conversión opcional** de hallazgos a vulnerabilidades del sistema principal
+- **Historial completo** de análisis con vista detallada
+- **Integración perfecta** con el flujo de trabajo existente
+
 ## 🛠️ **Implementación Técnica**
 
 ### **Backend (Flask)**
-- **Nuevo endpoint**: `/api/documents/analyze`
+- **Nuevos endpoints**:
+  - `/api/documents/analyze` - Análisis de documentos
+  - `/api/documents/history` - Historial de análisis
+  - `/api/documents/history/<id>` - Detalle de análisis específico
+  - `/api/documents/supported-formats` - Formatos soportados
+- **Nuevo modelo**: `DocumentAnalysis` para almacenar resultados
 - **Dependencias agregadas**:
   - `PyPDF2==3.0.1` - Para extraer texto de PDFs
   - `python-docx==1.1.0` - Para extraer texto de documentos Word
@@ -51,21 +63,31 @@ El sistema genera recomendaciones específicas basadas en:
   - Análisis de patrones de vulnerabilidades
   - Cálculo de scores CVSS
   - Generación de recomendaciones
+  - Almacenamiento en base de datos
   - Integración con sistema de auditoría
+  - Conversión a vulnerabilidades del sistema principal
 
 ### **Frontend (React)**
-- **Nuevo componente**: `DocumentAnalyzer.tsx`
+- **Nuevos componentes**:
+  - `DocumentAnalyzer.tsx` - Interfaz principal de análisis
+  - `DocumentAnalysisCard.tsx` - Tarjeta de resumen en dashboard
+  - `DocumentAnalysisHistory.tsx` - Página de historial completo
 - **Características**:
   - Interfaz drag-and-drop para subir archivos
   - Diseño responsive con Tailwind CSS
   - Visualización detallada de resultados
-  - Traducción de términos técnicos al español
+  - Interfaz completamente en inglés
   - Integración con sistema de autenticación
+  - Botón "Add to Dashboard" para conversión
+  - Historial completo de análisis
+  - Navegación fluida entre secciones
 
 ### **Navegación**
-- **Nueva ruta**: `/document-analyzer`
+- **Nuevas rutas**:
+  - `/document-analyzer` - Análisis de documentos
+  - `/document-analysis-history` - Historial de análisis
 - **Acceso**: Disponible para todos los usuarios autenticados
-- **Botón de navegación** agregado al header del dashboard
+- **Integración**: Tarjeta de resumen en dashboard principal
 
 ## 📋 **Cómo Usar**
 
@@ -90,6 +112,13 @@ El sistema genera recomendaciones específicas basadas en:
 - **Componentes CVSS**: Desglose detallado de la evaluación
 - **Recomendaciones**: Acciones sugeridas para mitigar riesgos
 - **Vista Previa**: Texto extraído del documento
+- **Estado de Guardado**: Confirmación de almacenamiento en base de datos
+
+### **5. Gestión de Resultados**
+- **Ver en Dashboard**: Los análisis aparecen automáticamente en la tarjeta "Document Analysis"
+- **Convertir a Vulnerabilidad**: Usa el botón "Add to Dashboard" para crear una vulnerabilidad del sistema principal
+- **Ver Historial**: Accede a "Document Analysis History" para ver todos los análisis realizados
+- **Navegación**: Usa "Back to Dashboard" para regresar al panel principal
 
 ## 🔧 **Ejemplo de Uso**
 
@@ -110,20 +139,32 @@ REPORTE DE VULNERABILIDADES
 - **Score CVSS**: 9.8
 - **Severidad**: Critical
 - **Vulnerabilidades**: SQL Injection, XSS
+- **Componentes CVSS**: Attack Vector (Network), Attack Complexity (Low), etc.
 - **Recomendaciones**:
-  1. Implementar prepared statements
-  2. Sanitizar entrada de usuario
-  3. URGENTE: Atención inmediata requerida
+  1. HIGH PRIORITY: This vulnerability should be fixed soon
+  2. Implement prepared statements for SQL queries
+  3. Sanitize user input to prevent XSS attacks
+- **Estado**: Guardado en base de datos ✓
+- **Opciones**: 
+  - Ver en Dashboard (automático)
+  - Convertir a Vulnerabilidad (botón "Add to Dashboard")
+  - Ver Historial Completo
 
 ## 🚀 **Despliegue**
 
 ### **Backend (Render.com)**
 - Las nuevas dependencias se instalarán automáticamente
-- El endpoint estará disponible en: `https://cvss-scoring-system.onrender.com/api/documents/analyze`
+- Los endpoints estarán disponibles en:
+  - `https://cvss-scoring-system.onrender.com/api/documents/analyze`
+  - `https://cvss-scoring-system.onrender.com/api/documents/history`
+  - `https://cvss-scoring-system.onrender.com/api/documents/supported-formats`
 
 ### **Frontend (Netlify)**
-- El nuevo componente se desplegará automáticamente
-- Accesible en: `https://tu-sitio.netlify.app/document-analyzer`
+- Los nuevos componentes se desplegarán automáticamente
+- Accesible en:
+  - `https://tu-sitio.netlify.app/document-analyzer`
+  - `https://tu-sitio.netlify.app/document-analysis-history`
+- La tarjeta de resumen aparecerá automáticamente en el dashboard
 
 ## 🔒 **Seguridad**
 
@@ -141,6 +182,10 @@ REPORTE DE VULNERABILIDADES
 4. **Precisión**: Detecta patrones de vulnerabilidades conocidas
 5. **Trazabilidad**: Registra todas las operaciones en auditoría
 6. **Accesibilidad**: Interfaz intuitiva y responsive
+7. **Integración**: Arquitectura híbrida que se integra perfectamente con el sistema existente
+8. **Flexibilidad**: Permite convertir hallazgos a vulnerabilidades del sistema principal
+9. **Historial**: Mantiene un registro completo de todos los análisis realizados
+10. **Escalabilidad**: Diseño modular que permite futuras extensiones
 
 ## 🎯 **Casos de Uso**
 
@@ -150,8 +195,53 @@ REPORTE DE VULNERABILIDADES
 - **Educación**: Enseñar sobre vulnerabilidades comunes
 - **Investigación**: Analizar documentos de investigación de seguridad
 
+## 🔧 **Estructura de Base de Datos**
+
+### **Tabla: document_analyses**
+```sql
+CREATE TABLE document_analyses (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    filename VARCHAR(255) NOT NULL,
+    file_size INTEGER NOT NULL,
+    file_type VARCHAR(50) NOT NULL,
+    extracted_text TEXT,
+    vulnerability_types TEXT, -- JSON array
+    cvss_score FLOAT,
+    severity VARCHAR(20),
+    cvss_components TEXT, -- JSON object
+    recommendations TEXT, -- JSON array
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
+```
+
+## 🚀 **Instalación y Configuración**
+
+### **Dependencias Backend**
+```bash
+pip install PyPDF2==3.0.1 python-docx==1.1.0
+```
+
+### **Variables de Entorno**
+```bash
+# Backend
+DATABASE_URL=postgresql://...
+SECRET_KEY=your-secret-key
+JWT_SECRET_KEY=your-jwt-secret
+
+# Frontend
+VITE_API_URL=https://your-backend-url.com
+```
+
+### **Migración de Base de Datos**
+```bash
+# El modelo DocumentAnalysis se crea automáticamente
+# No se requieren migraciones adicionales
+```
+
 ---
 
-**¡El Analizador de Documentos está listo para usar!** 🎉
+**¡El Document Analyzer está completamente implementado y listo para usar!** 🎉
 
-Sube tus documentos PDF o Word y descubre automáticamente las vulnerabilidades y sus evaluaciones CVSS.
+Sube tus documentos PDF o Word, analiza vulnerabilidades automáticamente, y gestiona los resultados con la arquitectura híbrida integrada al dashboard principal.

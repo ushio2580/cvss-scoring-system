@@ -6,6 +6,7 @@ Sistema web completo para evaluación de vulnerabilidades usando CVSS v3.1, con 
 
 - **Dashboard Interactivo** con KPIs y gráficos en tiempo real
 - **Sistema de Evaluaciones CVSS** con seguimiento temporal
+- **📄 Document Analyzer** - Análisis automático de vulnerabilidades en PDF/Word
 - **Exportes Profesionales** (CSV/PDF) con gráficos y diseño avanzado
 - **Historial de cambios** de vulnerabilidades
 - **Carga masiva** de vulnerabilidades (CSV/JSON)
@@ -26,7 +27,8 @@ PyFlask/
 │   │   │   ├── vulnerability.py
 │   │   │   ├── evaluation.py
 │   │   │   ├── audit_log.py
-│   │   │   └── vulnerability_history.py
+│   │   │   ├── vulnerability_history.py
+│   │   │   └── document_analysis.py
 │   │   ├── routes/
 │   │   │   ├── auth.py
 │   │   │   ├── vulns.py
@@ -35,7 +37,8 @@ PyFlask/
 │   │   │   ├── bulk_upload.py
 │   │   │   ├── audit_logs.py
 │   │   │   ├── database_manager.py
-│   │   │   └── evaluations.py
+│   │   │   ├── evaluations.py
+│   │   │   └── document_analyzer.py
 │   │   ├── services/
 │   │   │   ├── cvss_service.py
 │   │   │   └── report_generator.py
@@ -54,12 +57,16 @@ PyFlask/
 │   │   │   ├── BulkUploadModal.tsx
 │   │   │   ├── AuditLogs.tsx
 │   │   │   ├── DatabaseManager.tsx
-│   │   │   └── CVSSCalculator.tsx
+│   │   │   ├── CVSSCalculator.tsx
+│   │   │   ├── DocumentAnalyzer.tsx
+│   │   │   └── Dashboard/
+│   │   │       └── DocumentAnalysisCard.tsx
 │   │   ├── pages/
 │   │   │   ├── Dashboard.tsx
 │   │   │   ├── Vulnerabilities.tsx
 │   │   │   ├── AuditLogs.tsx
-│   │   │   └── DatabaseManager.tsx
+│   │   │   ├── DatabaseManager.tsx
+│   │   │   └── DocumentAnalysisHistory.tsx
 │   │   ├── services/
 │   │   │   └── api.ts
 │   │   └── types/
@@ -75,6 +82,7 @@ PyFlask/
 
 - **KPIs en tiempo real** (Total vulnerabilidades, Críticas, Evaluaciones)
 - **Gráficos interactivos** (Distribución por severidad, Tendencia temporal)
+- **📄 Document Analysis Card** - Resumen de análisis recientes
 - **Exportes Profesionales** con gráficos y diseño avanzado
 - **Sistema de Evaluaciones CVSS** con seguimiento temporal
 - **Auditoría y Logs** detallados
@@ -93,6 +101,16 @@ PyFlask/
 - Historial de cambios de vulnerabilidades
 - Exportes de logs (CSV/PDF)
 - Filtros y búsqueda avanzada
+
+### Document Analyzer
+- **Análisis automático** de vulnerabilidades en documentos PDF/Word
+- **Detección inteligente** de tipos de vulnerabilidades (SQL Injection, XSS, CSRF, etc.)
+- **Cálculo automático** de scores CVSS basado en contenido
+- **Recomendaciones personalizadas** para mitigación
+- **Historial de análisis** con vista detallada
+- **Integración híbrida** - convertir hallazgos a vulnerabilidades del dashboard
+- **Interfaz drag-and-drop** para carga de archivos
+- **Soporte para formatos**: PDF, DOC, DOCX (hasta 16MB)
 
 ### Database Manager
 - Vista de estructura de tablas
@@ -131,6 +149,14 @@ PyFlask/
 2. Haz clic en "Export CSV" o "Export PDF"
 3. Selecciona las opciones de filtrado
 4. Descarga el reporte profesional
+
+### Analizar Documentos
+1. Ve a "Document Analyzer" desde el dashboard
+2. Arrastra y suelta un archivo PDF o Word (o haz clic para seleccionar)
+3. Haz clic en "Analyze Document"
+4. Revisa los resultados: vulnerabilidades detectadas, score CVSS, recomendaciones
+5. Opcionalmente, haz clic en "Add to Dashboard" para convertir el análisis en una vulnerabilidad
+6. Ve a "Document Analysis History" para ver todos los análisis realizados
 
 ## 🌐 Despliegue en Heroku
 
@@ -223,6 +249,8 @@ npm run dev
 - **Pandas** - Manipulación de datos
 - **ReportLab** - Generación de PDFs
 - **Matplotlib/Seaborn** - Gráficos para reportes
+- **PyPDF2** - Extracción de texto de PDFs
+- **python-docx** - Extracción de texto de documentos Word
 
 ### Frontend
 - **React 18** - Framework de UI
@@ -249,6 +277,7 @@ npm run dev
 - `/api/vulns/*` - Requiere autenticación
 - `/api/dashboard/*` - Requiere autenticación
 - `/api/exports/*` - Requiere autenticación
+- `/api/documents/*` - Requiere autenticación (Document Analyzer)
 - `/api/database-manager/*` - Solo Admin/DB Manager
 
 ## 📈 Métricas y KPIs
@@ -257,6 +286,7 @@ npm run dev
 - Total de vulnerabilidades
 - Vulnerabilidades críticas
 - Evaluaciones realizadas
+- Análisis de documentos realizados
 - Distribución por severidad
 - Tendencia temporal
 
