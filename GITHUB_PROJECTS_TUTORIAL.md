@@ -84,21 +84,27 @@ Ve a **Issues** → **Labels** y crea:
 - `⏳ pending`
 
 ### **Paso 6: Configurar Milestones**
-Ve a **Issues** → **Milestones** y crea:
-- `Sprint 1 - Configuración y Autenticación`
-- `Sprint 2 - Dashboard Principal`
-- `Sprint 3 - CRUD de Vulnerabilidades`
-- `Sprint 4 - Evaluaciones CVSS Básicas`
-- `Sprint 5 - Seguimiento Temporal`
-- `Sprint 6 - Análisis de Documentos`
-- `Sprint 7 - Arquitectura Híbrida`
-- `Sprint 8 - Gestión de Base de Datos`
-- `Sprint 9 - Reportes Profesionales`
-- `Sprint 10 - Carga Masiva`
-- `Sprint 11 - Sistema de Auditoría`
-- `Sprint 12 - Diseño Responsive`
-- `Sprint 13 - Despliegue en Producción`
-- `Sprint 14 - Documentación`
+Ve a **Issues** → **Milestones** y crea con fechas:
+
+**Semana 1 (25-31 agosto 2025):**
+- `Sprint 1 - Configuración y Autenticación` (Due: 2025-08-25)
+- `Sprint 2 - Dashboard Principal` (Due: 2025-08-26)
+- `Sprint 3 - CRUD de Vulnerabilidades` (Due: 2025-08-27)
+- `Sprint 4 - Evaluaciones CVSS Básicas` (Due: 2025-08-28)
+- `Sprint 5 - Seguimiento Temporal` (Due: 2025-08-29)
+
+**Semana 2 (1-7 septiembre 2025):**
+- `Sprint 6 - Análisis de Documentos` (Due: 2025-09-01)
+- `Sprint 7 - Arquitectura Híbrida` (Due: 2025-09-02)
+- `Sprint 8 - Gestión de Base de Datos` (Due: 2025-09-03)
+- `Sprint 9 - Reportes Profesionales` (Due: 2025-09-04)
+- `Sprint 10 - Carga Masiva` (Due: 2025-09-05)
+
+**Semana 3 (8-12 septiembre 2025):**
+- `Sprint 11 - Sistema de Auditoría` (Due: 2025-09-08)
+- `Sprint 12 - Diseño Responsive` (Due: 2025-09-09)
+- `Sprint 13 - Despliegue en Producción` (Due: 2025-09-10)
+- `Sprint 14 - Documentación` (Due: 2025-09-11)
 
 ### **Paso 7: Configurar Automatizaciones**
 En el proyecto, ve a **Settings** → **Workflows** y configura:

@@ -273,17 +273,17 @@ Sprint 16 - Mejoras de Performance (Futuro)
 Sprint 17 - Funcionalidades Avanzadas (Futuro)
 ```
 
-### **5.2 Milestones por Epic**
+### **5.2 Milestones por Epic con Fechas**
 ```
-🏆 Epic 1: Sistema Base de Vulnerabilidades
-🎯 Epic 2: Sistema de Evaluaciones CVSS
-📄 Epic 3: Document Analyzer
-🗄️ Epic 4: Database Manager
-📊 Epic 5: Reportes y Exportes
-🔍 Epic 6: Auditoría y Logs
-🎨 Epic 7: Diseño Responsive
-🚀 Epic 8: Despliegue y DevOps
-🔮 Epic 9: Futuras Mejoras
+🏆 Epic 1: Sistema Base de Vulnerabilidades (25-27 agosto 2025)
+🎯 Epic 2: Sistema de Evaluaciones CVSS (28-29 agosto 2025)
+📄 Epic 3: Document Analyzer (1-2 septiembre 2025)
+🗄️ Epic 4: Database Manager (3 septiembre 2025)
+📊 Epic 5: Reportes y Exportes (4-5 septiembre 2025)
+🔍 Epic 6: Auditoría y Logs (8 septiembre 2025)
+🎨 Epic 7: Diseño Responsive (9 septiembre 2025)
+🚀 Epic 8: Despliegue y DevOps (10-11 septiembre 2025)
+🔮 Epic 9: Futuras Mejoras (Backlog futuro)
 ```
 
 ---

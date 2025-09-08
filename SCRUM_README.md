@@ -2,7 +2,7 @@
 
 ## 🚀 **Resumen Ejecutivo**
 
-Este documento presenta la implementación completa de metodología SCRUM en el desarrollo del **Sistema de Evaluación de Vulnerabilidades CVSS v3.1**. El proyecto ha sido desarrollado exitosamente usando SCRUM, resultando en un sistema 100% funcional con métricas excepcionales.
+Este documento presenta la implementación completa de metodología SCRUM en el desarrollo del **Sistema de Evaluación de Vulnerabilidades CVSS v3.1**. El proyecto ha sido desarrollado exitosamente usando SCRUM durante el período del **25 agosto - 12 septiembre 2025 (3 semanas)**, resultando en un sistema 100% funcional con métricas excepcionales.
 
 ---
 
@@ -10,6 +10,7 @@ Este documento presenta la implementación completa de metodología SCRUM en el 
 
 | Métrica | Valor | Estado |
 |---------|-------|---------|
+| **Período del Proyecto** | 25 ago - 12 sep 2025 | ✅ 3 semanas |
 | **Sprints Completados** | 14 | ✅ 100% |
 | **Story Points** | 340 | ✅ 100% |
 | **Velocidad Promedio** | 28.5 pts/sprint | ✅ Excelente |

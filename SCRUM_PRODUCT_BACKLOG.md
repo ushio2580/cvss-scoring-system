@@ -4,6 +4,7 @@
 
 **Producto**: Sistema de Evaluación de Vulnerabilidades CVSS v3.1  
 **Objetivo**: Plataforma web completa para gestión, evaluación y análisis de vulnerabilidades de seguridad  
+**Período del Proyecto**: 25 de agosto - 12 de septiembre de 2025 (3 semanas)  
 **Estado Actual**: ✅ **COMPLETADO** - Sistema funcional con todas las funcionalidades implementadas  
 **Tecnologías**: Flask (Backend), React (Frontend), SQLite/PostgreSQL, CVSS v3.1  
 
@@ -11,7 +12,7 @@
 
 ## 🏆 **EPIC 1: Sistema Base de Vulnerabilidades** ✅ **COMPLETADO**
 
-### **Sprint 1: Configuración y Autenticación** ✅ **COMPLETADO**
+### **Sprint 1: Configuración y Autenticación** ✅ **COMPLETADO** (25 agosto 2025)
 - [x] **US-001**: Como desarrollador, quiero configurar el entorno de desarrollo para poder trabajar en el proyecto
   - **Tareas**:
     - [x] Configurar estructura del proyecto (backend/frontend)
@@ -38,7 +39,7 @@
   - **Estimación**: 8 story points
   - **Estado**: ✅ Done
 
-### **Sprint 2: Dashboard Principal** ✅ **COMPLETADO**
+### **Sprint 2: Dashboard Principal** ✅ **COMPLETADO** (26 agosto 2025)
 - [x] **US-004**: Como usuario, quiero ver un dashboard principal para tener una vista general del sistema
   - **Tareas**:
     - [x] Crear dashboard con KPIs principales
@@ -56,7 +57,7 @@
   - **Estimación**: 8 story points
   - **Estado**: ✅ Done
 
-### **Sprint 3: CRUD de Vulnerabilidades** ✅ **COMPLETADO**
+### **Sprint 3: CRUD de Vulnerabilidades** ✅ **COMPLETADO** (27 agosto 2025)
 - [x] **US-006**: Como analista, quiero crear vulnerabilidades para registrar nuevos hallazgos
   - **Tareas**:
     - [x] Formulario de creación de vulnerabilidades
@@ -87,7 +88,7 @@
 
 ## 🎯 **EPIC 2: Sistema de Evaluaciones CVSS** ✅ **COMPLETADO**
 
-### **Sprint 4: Evaluaciones CVSS Básicas** ✅ **COMPLETADO**
+### **Sprint 4: Evaluaciones CVSS Básicas** ✅ **COMPLETADO** (28 agosto 2025)
 - [x] **US-009**: Como analista, quiero crear evaluaciones CVSS para vulnerabilidades
   - **Tareas**:
     - [x] Formulario de evaluación CVSS
@@ -106,7 +107,7 @@
   - **Estimación**: 13 story points
   - **Estado**: ✅ Done
 
-### **Sprint 5: Seguimiento Temporal** ✅ **COMPLETADO**
+### **Sprint 5: Seguimiento Temporal** ✅ **COMPLETADO** (29 agosto 2025)
 - [x] **US-011**: Como analista, quiero crear múltiples evaluaciones para la misma vulnerabilidad
   - **Tareas**:
     - [x] Relación uno-a-muchos (Vulnerability -> Evaluations)
@@ -127,7 +128,7 @@
 
 ## 📄 **EPIC 3: Document Analyzer** ✅ **COMPLETADO**
 
-### **Sprint 6: Análisis de Documentos** ✅ **COMPLETADO**
+### **Sprint 6: Análisis de Documentos** ✅ **COMPLETADO** (1 septiembre 2025)
 - [x] **US-013**: Como analista, quiero subir documentos PDF/Word para análisis automático
   - **Tareas**:
     - [x] Interfaz drag-and-drop para archivos
@@ -146,7 +147,7 @@
   - **Estimación**: 21 story points
   - **Estado**: ✅ Done
 
-### **Sprint 7: Arquitectura Híbrida** ✅ **COMPLETADO**
+### **Sprint 7: Arquitectura Híbrida** ✅ **COMPLETADO** (2 septiembre 2025)
 - [x] **US-015**: Como analista, quiero ver los resultados de análisis en el dashboard
   - **Tareas**:
     - [x] Tarjeta de resumen en dashboard
@@ -175,7 +176,7 @@
 
 ## 🗄️ **EPIC 4: Database Manager** ✅ **COMPLETADO**
 
-### **Sprint 8: Gestión de Base de Datos** ✅ **COMPLETADO**
+### **Sprint 8: Gestión de Base de Datos** ✅ **COMPLETADO** (3 septiembre 2025)
 - [x] **US-018**: Como administrador, quiero gestionar la base de datos para mantener la integridad del sistema
   - **Tareas**:
     - [x] Vista de estructura de tablas
@@ -198,7 +199,7 @@
 
 ## 📊 **EPIC 5: Reportes y Exportes** ✅ **COMPLETADO**
 
-### **Sprint 9: Reportes Profesionales** ✅ **COMPLETADO**
+### **Sprint 9: Reportes Profesionales** ✅ **COMPLETADO** (4 septiembre 2025)
 - [x] **US-020**: Como usuario, quiero exportar reportes en PDF con diseño profesional
   - **Tareas**:
     - [x] Generación de PDFs con ReportLab
@@ -216,7 +217,7 @@
   - **Estimación**: 8 story points
   - **Estado**: ✅ Done
 
-### **Sprint 10: Carga Masiva** ✅ **COMPLETADO**
+### **Sprint 10: Carga Masiva** ✅ **COMPLETADO** (5 septiembre 2025)
 - [x] **US-022**: Como analista, quiero cargar múltiples vulnerabilidades desde archivos CSV/JSON
   - **Tareas**:
     - [x] Interfaz de carga masiva
@@ -230,7 +231,7 @@
 
 ## 🔍 **EPIC 6: Auditoría y Logs** ✅ **COMPLETADO**
 
-### **Sprint 11: Sistema de Auditoría** ✅ **COMPLETADO**
+### **Sprint 11: Sistema de Auditoría** ✅ **COMPLETADO** (8 septiembre 2025)
 - [x] **US-023**: Como administrador, quiero ver logs de auditoría para monitorear la actividad
   - **Tareas**:
     - [x] Registro de todas las acciones
@@ -252,7 +253,7 @@
 
 ## 🎨 **EPIC 7: Diseño Responsive** ✅ **COMPLETADO**
 
-### **Sprint 12: Responsive Design** ✅ **COMPLETADO**
+### **Sprint 12: Responsive Design** ✅ **COMPLETADO** (9 septiembre 2025)
 - [x] **US-025**: Como usuario, quiero usar el sistema en cualquier dispositivo
   - **Tareas**:
     - [x] Diseño responsive con Tailwind CSS
@@ -275,7 +276,7 @@
 
 ## 🚀 **EPIC 8: Despliegue y DevOps** ✅ **COMPLETADO**
 
-### **Sprint 13: Despliegue en Producción** ✅ **COMPLETADO**
+### **Sprint 13: Despliegue en Producción** ✅ **COMPLETADO** (10 septiembre 2025)
 - [x] **US-027**: Como desarrollador, quiero desplegar el backend en Render.com
   - **Tareas**:
     - [x] Configuración de Render.com
@@ -294,7 +295,7 @@
   - **Estimación**: 8 story points
   - **Estado**: ✅ Done
 
-### **Sprint 14: Documentación** ✅ **COMPLETADO**
+### **Sprint 14: Documentación** ✅ **COMPLETADO** (11 septiembre 2025)
 - [x] **US-029**: Como usuario, quiero documentación completa para usar el sistema
   - **Tareas**:
     - [x] README principal

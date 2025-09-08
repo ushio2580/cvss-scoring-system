@@ -2,7 +2,7 @@
 
 ## 🎯 **Introducción**
 
-Esta guía documenta todos los procesos SCRUM implementados en el desarrollo del sistema CVSS Scoring System. Incluye ceremonias, roles, artefactos y mejores prácticas basadas en la experiencia real del proyecto.
+Esta guía documenta todos los procesos SCRUM implementados en el desarrollo del sistema CVSS Scoring System durante el período del **25 agosto - 12 septiembre 2025 (3 semanas)**. Incluye ceremonias, roles, artefactos y mejores prácticas basadas en la experiencia real del proyecto.
 
 ---
 

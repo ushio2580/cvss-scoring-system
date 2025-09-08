@@ -5,7 +5,7 @@
 **Proyecto**: Sistema de Evaluación de Vulnerabilidades CVSS v3.1  
 **Metodología**: SCRUM  
 **Estado**: ✅ **COMPLETADO** (14 sprints)  
-**Período**: [Fecha inicio] - [Fecha fin]  
+**Período**: 25 agosto - 12 septiembre 2025 (3 semanas)  
 **Equipo**: 1-3 desarrolladores  
 
 ---
@@ -13,22 +13,22 @@
 ## 📈 **Métricas de Velocidad del Equipo**
 
 ### **📊 Velocidad por Sprint**
-| Sprint | Story Points Planificados | Story Points Completados | Velocidad | Estado |
-|--------|---------------------------|--------------------------|-----------|---------|
-| Sprint 1 | 29 | 29 | 29 | ✅ Completado |
-| Sprint 2 | 21 | 21 | 21 | ✅ Completado |
-| Sprint 3 | 29 | 29 | 29 | ✅ Completado |
-| Sprint 4 | 34 | 34 | 34 | ✅ Completado |
-| Sprint 5 | 21 | 21 | 21 | ✅ Completado |
-| Sprint 6 | 42 | 42 | 42 | ✅ Completado |
-| Sprint 7 | 34 | 34 | 34 | ✅ Completado |
-| Sprint 8 | 34 | 34 | 34 | ✅ Completado |
-| Sprint 9 | 29 | 29 | 29 | ✅ Completado |
-| Sprint 10 | 13 | 13 | 13 | ✅ Completado |
-| Sprint 11 | 34 | 34 | 34 | ✅ Completado |
-| Sprint 12 | 34 | 34 | 34 | ✅ Completado |
-| Sprint 13 | 21 | 21 | 21 | ✅ Completado |
-| Sprint 14 | 13 | 13 | 13 | ✅ Completado |
+| Sprint | Fecha | Story Points Planificados | Story Points Completados | Velocidad | Estado |
+|--------|-------|---------------------------|--------------------------|-----------|---------|
+| Sprint 1 | 25 ago 2025 | 29 | 29 | 29 | ✅ Completado |
+| Sprint 2 | 26 ago 2025 | 21 | 21 | 21 | ✅ Completado |
+| Sprint 3 | 27 ago 2025 | 29 | 29 | 29 | ✅ Completado |
+| Sprint 4 | 28 ago 2025 | 34 | 34 | 34 | ✅ Completado |
+| Sprint 5 | 29 ago 2025 | 21 | 21 | 21 | ✅ Completado |
+| Sprint 6 | 1 sep 2025 | 42 | 42 | 42 | ✅ Completado |
+| Sprint 7 | 2 sep 2025 | 34 | 34 | 34 | ✅ Completado |
+| Sprint 8 | 3 sep 2025 | 34 | 34 | 34 | ✅ Completado |
+| Sprint 9 | 4 sep 2025 | 29 | 29 | 29 | ✅ Completado |
+| Sprint 10 | 5 sep 2025 | 13 | 13 | 13 | ✅ Completado |
+| Sprint 11 | 8 sep 2025 | 34 | 34 | 34 | ✅ Completado |
+| Sprint 12 | 9 sep 2025 | 34 | 34 | 34 | ✅ Completado |
+| Sprint 13 | 10 sep 2025 | 21 | 21 | 21 | ✅ Completado |
+| Sprint 14 | 11 sep 2025 | 13 | 13 | 13 | ✅ Completado |
 
 ### **📊 Estadísticas de Velocidad**
 - **Velocidad Promedio**: 28.5 story points/sprint
