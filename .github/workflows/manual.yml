@@ -1,0 +1,11 @@
+# Automatización 1: Mover a In Progress
+when: issue is assigned
+action: move to "In Progress"
+
+# Automatización 2: Mover a Review
+when: pull request is created
+action: move to "Review"
+
+# Automatización 3: Mover a Done
+when: pull request is merged
+action: move to "Done"
