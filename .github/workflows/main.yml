@@ -1,0 +1,42 @@
+name: Move Issues Through Columns
+
+on:
+  issues:
+    types: [assigned]  # Este evento se dispara cuando se asigna un issue
+  pull_request:
+    types: [opened, closed]  # Este evento se dispara cuando se abre o se cierra un PR
+
+jobs:
+  move-issue:
+    runs-on: ubuntu-latest  # Establece el sistema operativo en el que se ejecutará el flujo
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Mover a "In Progress" cuando el issue sea asignado
+      - name: Move to "In Progress"
+        if: github.event_name == 'issues' && github.event.action == 'assigned'
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{"column_id": "Y3Vyc29yOnYyOpLODTD1AK1bXbiw9cmVzcw"}' \
+            "https://api.github.com/projects/columns/Y3Vyc29yOnYyOpLODTD1AK1bXbiw9cmVzcw/moves"
+
+      # Mover a "Review" cuando se abra un PR
+      - name: Move to "In Review"
+        if: github.event_name == 'pull_request' && github.event.action == 'opened'
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{"column_id": "Y3Vyc29yOnYyOpLODTD1AK1bY8yZXZPZxc"}' \
+            "https://api.github.com/projects/columns/Y3Vyc29yOnYyOpLODTD1AK1bY8yZXZPZxc/moves"
+
+      # Mover a "Done" cuando el PR se mergee
+      - name: Move to "Done"
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{"column_id": "Y3Vyc29yOnYyOpLODTD1AK1REkReB251"}' \
+            "https://api.github.com/projects/columns/Y3Vyc29yOnYyOpLODTD1AK1REkReB251/moves"
